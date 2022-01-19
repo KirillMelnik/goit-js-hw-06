@@ -10,14 +10,15 @@ const refs = {
   boxesEl: document.querySelector('#boxes'),
 }
 
-let initialBoxSize = 30;
-const boxSizeStep = 10;
+    
 
 function createBoxes(amount) {
-  for (let i = 1; i <= amount; i++) {
+  let initialBoxSize = 30;
+  for (let i = 0; i < amount; i++) {
     const box = `<div style="width: ${initialBoxSize}px; height: ${initialBoxSize}px; background-color: ${getRandomHexColor()};"></div>`
-    initialBoxSize += boxSizeStep;
     refs.boxesEl.insertAdjacentHTML('beforeend', box);
+    const boxSizeStep = 10;
+    initialBoxSize += boxSizeStep;
   }
 }
 
