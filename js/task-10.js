@@ -16,14 +16,25 @@ const boxSizeStep = 10;
 
 function createBoxes(amount) {
   for (let i = 1; i <= amount; i++) {
-    const box = `<div style="width: ${initialBoxSize}px; height: ${initialBoxSize}px; background-color: ${getRandomHexColor()};"></div>`
-    initialBoxSize += boxSizeStep;
-    refs.boxesEl.insertAdjacentHTML('beforeend', box);
+    const newElement = document.createElement('div');
+    newElement.style.backgroundColor = `${getRandomHexColor()}`;
+    newElement.style.width = `${initialBoxSize += 10}px`;
+    newElement.style.height = `${initialBoxSize += 10}px`;
+    refs.boxesEl.append(newElement);
   }
 }
 
+// function createBoxes(amount) {
+//   for (let i = 1; i <= amount; i++) {
+//     const box = `<div style="width: ${initialBoxSize}px; height: ${initialBoxSize}px; background-color: ${getRandomHexColor()};"></div>`
+//     initialBoxSize += boxSizeStep;
+//     refs.boxesEl.insertAdjacentHTML('beforeend', box);
+//   }
+// }
+
 function destroyBox() {
   refs.boxesEl.innerHTML = '';
+  refs.input.value = '';
 }
 
 refs.createBtn.addEventListener('click', () => {
@@ -32,5 +43,4 @@ refs.createBtn.addEventListener('click', () => {
 
 refs.destroyBtn.addEventListener('click', () => {
   destroyBox();
-  refs.input.value = '';
 })
