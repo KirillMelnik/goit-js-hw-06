@@ -2,7 +2,6 @@ function getRandomHexColor() {
   return `#${Math.floor(Math.random() * 16777215).toString(16)}`;
 }
 
-
 const refs = {
   controls: document.querySelector('#controls'),
   input: document.querySelector('input'),
@@ -16,21 +15,11 @@ const boxSizeStep = 10;
 
 function createBoxes(amount) {
   for (let i = 1; i <= amount; i++) {
-    const newElement = document.createElement('div');
-    newElement.style.backgroundColor = `${getRandomHexColor()}`;
-    newElement.style.width = `${initialBoxSize += 10}px`;
-    newElement.style.height = `${initialBoxSize += 10}px`;
-    refs.boxesEl.append(newElement);
+    const box = `<div style="width: ${initialBoxSize}px; height: ${initialBoxSize}px; background-color: ${getRandomHexColor()};"></div>`
+    initialBoxSize += boxSizeStep;
+    refs.boxesEl.insertAdjacentHTML('beforeend', box);
   }
 }
-
-// function createBoxes(amount) {
-//   for (let i = 1; i <= amount; i++) {
-//     const box = `<div style="width: ${initialBoxSize}px; height: ${initialBoxSize}px; background-color: ${getRandomHexColor()};"></div>`
-//     initialBoxSize += boxSizeStep;
-//     refs.boxesEl.insertAdjacentHTML('beforeend', box);
-//   }
-// }
 
 function destroyBox() {
   refs.boxesEl.innerHTML = '';
