@@ -11,6 +11,7 @@ function onFormSubmit(evt) {
   )
   {
     alert('All form fields must be filled out!');
+    evt.currentTarget.reset();
   }
     
   else {
